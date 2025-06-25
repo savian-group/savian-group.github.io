@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Savian Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    color: #eee;
+    line-height: 1.6;
+  }
+  a {
+    color: #1ed760;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #1db954;
+  }
+  header {
+    position: fixed;
+    width: 100%;
+    background: rgba(18,18,18,0.95);
+    padding: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  header img {
+    height: 80px;
+    width: auto;
+    cursor: pointer;
+  }
+  nav a {
+    margin-left: 2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #1ed760;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after {
+    width: 100%;
+  }
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+    color: #e0f7fa;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 0;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    animation: fadeInUp 1.2s ease forwards;
+    opacity: 0;
+  }
+  .hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  }
+  .hero-content p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.5;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  }
+  /* Sections */
+  section {
+    padding: 5rem 3rem;
+    max-width: 1200px;
+    margin: auto;
+    background: #181818;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s ease forwards;
+  }
+  section:nth-of-type(2) {
+    animation-delay: 0.3s;
+  }
+  section:nth-of-type(3) {
+    animation-delay: 0.6s;
+  }
+  section:nth-of-type(4) {
+    animation-delay: 0.9s;
+  }
+  section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    color: #1ed760;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1.5px;
+  }
+  /* Grid cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 2.5rem;
+  }
+  .card {
+    background: #222;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 6px 20px rgba(30,215,96,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 40px rgba(30,215,96,0.6);
+  }
+  .card h3 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #1ed760;
+  }
+  .card p {
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ccc;
+  }
+  /* Contact */
+  #kontakt p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+  }
+  #kontakt a {
+    font-weight: 500;
+  }
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background: #111;
+    color: #555;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+  /* Animations */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Responsive */
+  @media(max-width: 768px) {
+    header {
+      padding: 1rem 1.5rem;
+    }
+    nav a {
+      margin-left: 1rem;
+      font-size: 1rem;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+  }
+  /* Scroll behavior & offset for fixed header */
+  html {
+    scroll-padding-top: 90px;
+    scroll-behavior: smooth;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Logo Uroš Savić" />
+  <nav>
+    <a href="#usluge">Usluge</a>
+    <a href="#projekti">Projekti</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Dizajn stambenih objekata</h1>
+    <p>Renderi, enterijer, eksterijer – po dogovoru.<br/> Govorim srpski, nemački i engleski jezik.</p>
+  </div>
+</section>
+
+<section id="usluge">
+  <h2>Usluge</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>3D Renderi</h3>
+      <p>Visokokvalitetni renderi za prezentacije i oglašavanje.</p>
+    </div>
+    <div class="card">
+      <h3>Enterijer</h3>
+      <p>Dizajn unutrašnjeg prostora prema željama klijenata.</p>
+    </div>
+    <div class="card">
+      <h3>Eksterijer</h3>
+      <p>Vizualizacija fasada i spoljašnjeg izgleda objekta.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projekti">
+  <h2>Projekti</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Savremeni stambeni objekat</h3>
+      <p>Moderni renderi i funkcionalan raspored prostorija.</p>
+    </div>
+    <div class="card">
+      <h3>Enterijer apartmana</h3>
+      <p>Kreativna rešenja u malim prostorima – SketchUp i Revit.</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <h2>Kontakt</h2>
+  <p>Google lokacija: Železnička 50, 15135 Majur</p>
+  <p>Email: <a href="mailto:urossavic2006@gmail.com">urossavic2006@gmail.com</a> | Telefon: <a href="tel:+381654558058">065/455-8058</a></p>
+  <p>Instagram: <a href="https://www.instagram.com/urrosavicc" target="_blank">@urrosavicc</a></p>
+</section>
+
+<footer>
+  &copy; 2025 Uroš Savić — Sva prava zadržana
+</footer>
+
+<script>
+  // Scroll to section and center it vertically on screen on menu click
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const offset = window.innerHeight / 2 - target.offsetHeight / 2;
+
+      window.scrollTo({
+        top: targetPosition - offset,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
